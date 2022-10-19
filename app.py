@@ -40,4 +40,5 @@ def login():
     else:
         error = ""
 
+
     return render_template('login.html', error = error)
