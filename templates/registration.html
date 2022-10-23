@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+    <form action="" method="post">
+      <p>
+    <label for="name">Your name:</label>
+    <input type="text" name="name" data-reg="^[а-яА-ЯёЁa-zA-Z]+ [а-яА-ЯёЁa-zA-Z]+ ?[а-яА-ЯёЁa-zA-Z]+$">
+     </p>
+        <p>
+        <label for="login">Login:</label>
+        <input type="text" name="login" data-reg="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$">
+         </p>
+    <p>
+        <label for="password">Password:</label>
+        <input type="password" name="password" data-reg="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+    </p>
+    <p>
+        <input type="submit" value="Sign In">
+    </p>
+    </form>
+
+</body>
+</html>
