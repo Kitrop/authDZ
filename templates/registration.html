@@ -18,6 +18,11 @@
         <label for="password">Password:</label>
         <input type="password" name="password" data-reg="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
     </p>
+        {% if errorReg %}
+        <p style="color: red">
+            {{errorReg}}
+        </p>
+        {% endif %}
     <p>
         <input type="submit" value="Sign In">
     </p>
