@@ -23,12 +23,13 @@ def registration():
         login = request.form.get('login')
         password = request.form.get('password')
 
-        if len("".join(login.split())) == 0 or pattern.search(login) or len("".join(password.split())) == 0 or pattern.search(password) or len("".join(name.split())) or pattern.search(name):
+        if len("".join(login.split())) == 0 or pattern.search(login) or len(
+                "".join(password.split())) == 0 or pattern.search(password) or len(
+                "".join(name.split())) or pattern.search(name):
             errorReg = 'Неверно заполненые поля'
-            return render_template('registration.html', errorReg = errorReg)
+            return render_template('registration.html', errorReg=errorReg)
 
-        cursor.execute('INSERT INTO auth.users (full_name, login, password) VALUES (%s, %s, %s);',
-                       (str(name), str(login), str(password)))
+        cursor.execute('INSERT INTO auth.users (full_name, login, password) VALUES (%s, %s, %s);',(str(name), str(login), str(password)))
         conn.commit()
 
         return redirect('/login/')
@@ -46,13 +47,13 @@ def login():
 
             if len("".join(username.split())) == 0 or pattern.search(username) or len("".join(password.split())) == 0 or pattern.search(password):
                 error = 'Неверно заполненые поля'
-                return render_template('login.html', error = error)
-
+                return render_template('login.html', error=error)
 
             cursor.execute("SELECT * FROM auth.users WHERE login=%s AND password=%s", (str(username), str(password)))
             records = list(cursor.fetchall())
-            return render_template('account.html', full_name=records[0][1], username=records[0][2],
-                                   password=records[0][3])
+            print(cursor.fetchone())
+
+            return render_template('account.html', full_name=records[0][1], username=records[0][2], password=records[0][3])
 
         elif request.form.get("registration"):
             return redirect("/registration/")
