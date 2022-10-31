@@ -20,6 +20,11 @@
         {{error}}
     </p>
     {% endif %}
+    {% if errorLogin %}
+    <p style="color: red">
+        {{errorLogin}}
+    </p>
+    {% endif %}
     <input type="submit" value="login" name="login">
     <input type="submit" value="registration" name="registration">
     </p>

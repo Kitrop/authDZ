@@ -51,7 +51,11 @@ def login():
 
             cursor.execute("SELECT * FROM auth.users WHERE login=%s AND password=%s", (str(username), str(password)))
             records = list(cursor.fetchall())
-            print(cursor.fetchone())
+            if len(records) == 0:
+                errorLogin = 'Неверно введеные данные'
+                return render_template('login.html', errorLogin=errorLogin)
+            print('LENGTH: ', len(records))
+            print('RECORDS: ', records)
 
             return render_template('account.html', full_name=records[0][1], username=records[0][2], password=records[0][3])
 
